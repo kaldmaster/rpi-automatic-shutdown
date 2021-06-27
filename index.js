@@ -1,13 +1,17 @@
 const Gpio = require('pigpio').Gpio;
 
-const inputPin = new Gpio(17, {
+const GPIO_PIN = 17;
+
+const inputPin = new Gpio(GPIO_PIN, {
     mode: Gpio.INPUT,
     pullUpDown: Gpio.PUD_DOWN,
     edge: Gpio.EITHER_EDGE
 });
 
-inputPin.on('interrupt', (level) => {
-    console.log('GPIO 17 interrupted, level now: ' + level);
+inputPin.glitchFilter(500000); // Debounce for 500 ms
+
+inputPin.on('alert', (level, tick) => {
+    console.log('GPIO ${GPIO_PIN} interrupted, level now:  ${level}');
 });
 
-console.log('Listening for changes on GPIO 17...');
+console.log('Listening for changes on GPIO ${GPIO_PIN}...');
