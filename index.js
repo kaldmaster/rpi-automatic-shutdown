@@ -9,7 +9,7 @@ const inputPin = new Gpio(GPIO_PIN, {
     edge: Gpio.EITHER_EDGE
 });
 
-inputPin.glitchFilter(DEBOUNCE_TIME_MS); 
+//inputPin.glitchFilter(DEBOUNCE_TIME_MS); 
 
 inputPin.on('alert', (level, tick) => {
     console.log('GPIO ${GPIO_PIN} interrupted, level now:  ${level}');
