@@ -1,6 +1,7 @@
 const Gpio = require('pigpio').Gpio;
 
-const GPIO_PIN = 17;
+let GPIO_PIN = 17;
+let DEBOUNCE_TIME_MS = 500000;
 
 const inputPin = new Gpio(GPIO_PIN, {
     mode: Gpio.INPUT,
@@ -8,7 +9,7 @@ const inputPin = new Gpio(GPIO_PIN, {
     edge: Gpio.EITHER_EDGE
 });
 
-inputPin.glitchFilter(500000); // Debounce for 500 ms
+inputPin.glitchFilter(DEBOUNCE_TIME_MS); // Debounce for 500 ms
 
 inputPin.on('alert', (level, tick) => {
     console.log('GPIO ${GPIO_PIN} interrupted, level now:  ${level}');
