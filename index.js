@@ -29,14 +29,15 @@ console.log(`GPIO ${GPIO_PIN} startup level:  ${currentLevel}`);
 if (!currentLevel) {
     shutdown();
 }
+else {
+    // Trigger on changes
+    inputPin.glitchFilter(DEBOUNCE_TIME_MS); 
+    inputPin.on('alert', (level, tick) => {
+        console.log(`GPIO ${GPIO_PIN}, level now:  ${level}`);
+        if (!level) {
+            shutdown();
+        }
+    });
 
-// Trigger on changes
-inputPin.glitchFilter(DEBOUNCE_TIME_MS); 
-inputPin.on('alert', (level, tick) => {
-    console.log(`GPIO ${GPIO_PIN}, level now:  ${level}`);
-    if (!currentLevel) {
-        shutdown();
-    }
-});
-
-console.log(`Listening for changes on GPIO ${GPIO_PIN}...`);
+    console.log(`Listening for changes on GPIO ${GPIO_PIN}...`);
+}
