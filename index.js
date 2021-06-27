@@ -18,7 +18,7 @@ function execute(command, callback) {
 
 function shutdown() {
     console.log('Shutting down...');
-    execute('shutdown -r now', function(callback, error) {
+    execute('sudo shutdown -r now', function(callback, error) {
         console.log(callback);
         if (error) {
             console.error(error);
