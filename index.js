@@ -18,15 +18,15 @@ function execute(command, callback) {
 
 function shutdown() {
     console.log('Shutting down...');
-    // execute('shutdown -r now', function(callback){
-    //     console.log(callback);
-    // });
+    execute('shutdown -r now', function(callback){
+        console.log(callback);
+    });
 }
 
 // Check current state of power
 let currentLevel = inputPin.digitalRead();
 console.log(`GPIO ${GPIO_PIN} startup level:  ${currentLevel}`);
-if (!currentLevel) {
+if (currentLevel) {
     shutdown();
 }
 else {
