@@ -9,3 +9,5 @@ const inputPin = new Gpio(17, {
 inputPin.on('interrupt', (level) => {
     console.log('GPIO 17 interrupted, level now: ' + level);
 });
+
+console.log('Listening for changes on GPIO 17...');
