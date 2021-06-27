@@ -1,0 +1,22 @@
+{
+  "name": "rpi-automatic-shutdown",
+  "version": "1.0.0",
+  "description": "Shuts down the raspberry when a GPIO pin is pulled low.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaldmaster/rpi-automatic-shutdown.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaldmaster/rpi-automatic-shutdown/issues"
+  },
+  "homepage": "https://github.com/kaldmaster/rpi-automatic-shutdown#readme",
+  "dependencies": {
+    "pigpio": "3.3.1"
+  }
+}
