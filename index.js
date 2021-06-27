@@ -13,13 +13,16 @@ const inputPin = new Gpio(GPIO_PIN, {
 var exec = require('child_process').exec;
 
 function execute(command, callback) {
-    exec(command, function(error, stdout, stderr){ callback(stdout); });
+    exec(command, function(error, stdout, stderr){ callback(stdout, stderr); });
 }
 
 function shutdown() {
     console.log('Shutting down...');
-    execute('shutdown -r now', function(callback){
+    execute('shutdown -r now', function(callback, error) {
         console.log(callback);
+        if (error) {
+            console.error(error);
+        }
     });
 }
 
