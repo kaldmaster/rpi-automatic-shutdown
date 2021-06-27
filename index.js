@@ -29,7 +29,7 @@ function shutdown() {
 // Check current state of power
 let currentLevel = inputPin.digitalRead();
 console.log(`GPIO ${GPIO_PIN} startup level:  ${currentLevel}`);
-if (currentLevel) {
+if (!currentLevel) {
     shutdown();
 }
 else {
