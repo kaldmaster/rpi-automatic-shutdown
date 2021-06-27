@@ -1,6 +1,6 @@
 const Gpio = require('pigpio').Gpio;
 
-let GPIO_PIN = 17;
+let GPIO_PIN = 25;
 let DEBOUNCE_TIME_MS = 300000; // Debounce for 300 ms (max)
 
 const inputPin = new Gpio(GPIO_PIN, {
